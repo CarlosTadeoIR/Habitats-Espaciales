@@ -1,0 +1,133 @@
+/* Fondo que simula el espacio */
+body.space-bg {
+    margin: 0;
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #f5f5f5;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.15) 0, transparent 50%),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,0.08) 0, transparent 55%),
+        radial-gradient(circle at 10% 80%, rgba(255,255,255,0.1) 0, transparent 60%),
+        linear-gradient(180deg, #040420 0%, #02010e 40%, #000000 100%);
+    background-attachment: fixed;
+}
+
+/* Contenedor principal centrado */
+.page-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+/* Paneles blancos tipo tarjetas */
+.panel {
+    background: rgba(255, 255, 255, 0.96);
+    color: #222;
+    border-radius: 18px;
+    padding: 1.8rem 2rem;
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.65);
+    border: 2px solid rgba(255,255,255,0.8);
+    margin-bottom: 1.7rem;
+    backdrop-filter: blur(6px);
+}
+
+.panel-text h1,
+.panel-text h2 {
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    color: #10306f;
+}
+
+.panel-text p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Panel de habitats */
+.panel-habitats {
+    text-align: center;
+}
+
+.panel-habitats h2 {
+    margin-top: 0;
+    margin-bottom: 1.2rem;
+    color: #0c3e7a;
+}
+
+/* Grid de tarjetas */
+.habitats-grid {
+    display: flex;
+    justify-content: center;
+    gap: 1.4rem;
+    flex-wrap: wrap;
+}
+
+/* Tarjeta individual */
+.habitat-card {
+    width: 150px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+/* Marco de la imagen */
+.image-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 2px solid #0f62fe;
+    box-shadow: 0 10px 22px rgba(0,0,0,0.55);
+    background: #000814;
+    position: relative;
+}
+
+/* Imagen y efecto de zoom */
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1);
+    transition: transform 0.25s ease-out, box-shadow 0.25s ease-out, border-color 0.25s ease-out;
+}
+
+/* Hover: acercar imagen y resaltar borde */
+.habitat-card:hover .image-wrapper img {
+    transform: scale(1.1);
+}
+
+.habitat-card:hover .image-wrapper {
+    border-color: #1dd1a1;
+    box-shadow: 0 16px 30px rgba(0,0,0,0.7);
+}
+
+/* Texto debajo de la imagen */
+.habitat-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #0c3e7a;
+    text-shadow: 0 1px 2px rgba(255,255,255,0.7);
+}
+
+/* Responsive: en pantallas pequeñas ocupar más ancho */
+@media (max-width: 600px) {
+    .page-container {
+        margin: 1rem auto;
+        padding: 0.5rem;
+    }
+
+    .panel {
+        padding: 1.3rem 1.3rem;
+    }
+
+    .habitats-grid {
+        gap: 1rem;
+    }
+
+    .habitat-card {
+        width: 45%;
+    }
+}

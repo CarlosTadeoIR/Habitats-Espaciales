@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Recorrido HabitatEspacial - Utah</title>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="{% static 'utah/style.css' %}">
+
+  <!-- Importmap para usar THREE desde CDN -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.158.0/build/three.module.js"
+    }
+  }
+  </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+  <!-- ===================================================== -->
+  <!-- Pantalla inicial -->
+  <!-- ===================================================== -->
+  <div id="overlay">
+    <div class="welcome-content">
+      <h1>Habitat Espacial</h1>
+      <h2>Recorrido Virtual</h2>
+      <p>Explora el hábitat espacial del futuro</p>
+
+      <div class="controls-preview">
+        <p><strong>Controles:</strong></p>
+        <p class="controls-inline" aria-hidden="false">
+          <span class="control">
+            <span class="mouse-icon" aria-hidden="true">🖱️</span>
+            <span class="ctrl-desc">Mirar</span>
+          </span>
+        </p>
+      </div>
+
+      <!-- Botón que llama a window.iniciarExploracion(), definido en app.js -->
+      <button id="startButton" onclick="window.iniciarExploracion && window.iniciarExploracion()">
+        Iniciar Recorrido
+      </button>
+    </div>
+  </div>
+
+  <!-- ===================================================== -->
+  <!-- Pantalla de carga -->
+  <!-- ===================================================== -->
+  <div id="loading-progress" style="display: none;">
+    <div class="loading-container">
+      <div class="loading-spinner"></div>
+      <p>Cargando Habitat...</p>
+    </div>
+  </div>
+
+  <!-- ===================================================== -->
+  <!-- Panel de información -->
+  <!-- ===================================================== -->
+  <div id="info-panel" style="display: none;">
+    <h3>Información del Sistema</h3>
+    <div id="camera-position">Posición: X:0 Y:0 Z:0</div>
+    <div id="tour-status">Modo: Control Manual</div>
+  </div>
+
+  <!-- ===================================================== -->
+  <!-- Panel de Instrucciones -->
+  <!-- ===================================================== -->
+  <div id="instrucciones" style="display: none;">
+    <h3>Controles</h3>
+
+    <div class="controls-grid">
+      <div class="control-item">
+        <span class="key">Click</span>
+        <span class="desc">Bloquear cursor</span>
+      </div>
+
+      <div class="control-item">
+        <span class="key">Esc</span>
+        <span class="desc">Desbloquear cursor</span>
+      </div>
+
+      <div class="control-item">
+        <span class="key">⟵ / ⟶</span>
+        <span class="desc">Punto anterior / siguiente</span>
+      </div>
+
+      <div class="control-item">
+        <span class="key">⏯</span>
+        <span class="desc">Recorrido automático</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================== -->
+  <!-- Info de Zona -->
+  <!-- ===================================================== -->
+  <div id="zone-info" style="display: none;">
+    <h3></h3>
+    <p></p>
+  </div>
+
+  <!-- ===================================================== -->
+  <!-- Minimapa -->
+  <!-- ===================================================== -->
+  <div id="minimap">
+    <h4>Vista General</h4>
+  </div>
+
+  <!-- ===================================================== -->
+  <!-- Controles de recorrido -->
+  <!-- ===================================================== -->
+  <div id="nav-controls">
+      <button id="btnBack">⟵ Retroceder</button>
+      <button id="btnPlay">⏯ Automático</button>
+      <button id="btnNext">Avanzar ⟶</button>
+  </div>
+
+  <!-- ===================================================== -->
+  <!-- Botón para regresar al Index -->
+  <!-- ===================================================== -->
+  <div style="position:absolute; top:10px; left:10px;">
+      <a href="/" style="font-size:18px; text-decoration:none;">🏠 Regresar al inicio</a>
+  </div>
+
+  <!-- ===================================================== -->
+  <!-- Canvas principal -->
+  <!-- ===================================================== -->
+  <!-- Si tu MotorRender usa un canvas específico, mantenemos este -->
+  <canvas id="renderCanvas"></canvas>
+
+  <!-- ===================================================== -->
+  <!-- Script principal (módulo JS) -->
+  <!-- ===================================================== -->
+  <script>
+    // Django nos da la URL real del modelo 3D
+    window.UTAH_GLTF_URL = "{% static 'utah/gltfmodel/SampleScene.glb' %}";
+  </script>
+
+  <script type="module" src="{% static 'utah/app.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Hábitats Espaciales</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Estilos del home -->
+    <link rel="stylesheet" href="{% static 'home/style.css' %}">
+</head>
+<body class="space-bg">
+
+    <main class="page-container">
+
+        <!-- SECCIÓN 1: PROPÓSITO -->
+        <section class="panel panel-text">
+            <h1>Recorrido por Hábitats Espaciales</h1>
+            <p>
+                Esta página presenta una serie de hábitats experimentales inspirados en
+                misiones espaciales y entornos extremos. Desde aquí puedes acceder a
+                recorridos virtuales en 3D y explorar cómo podrían ser las bases del futuro.
+            </p>
+        </section>
+
+        <!-- SECCIÓN 2: CRÉDITOS -->
+        <section class="panel panel-text">
+            <h2>Créditos</h2>
+            <p>
+                Proyecto desarrollado por Alumos de la universidad autonoma de Zacatecas.<br>
+            </p>
+        </section>
+
+        <!-- SECCIÓN 3: SELECCIÓN DE HÁBITATS -->
+        <section class="panel panel-habitats">
+            <h2>Selecciona un Hábitat</h2>
+
+            <div class="habitats-grid">
+
+                <!-- UTAH -->
+                <a href="/utah/" class="habitat-card">
+                    <div class="image-wrapper">
+                        <img src="{% static 'home/utah_thumb.jpg' %}" alt="Hábitat Utah">
+                    </div>
+                    <span class="habitat-name">Hábitat de Utah</span>
+                </a>
+
+                <!-- POLONIA -->
+                <a href="/polonia/" class="habitat-card">
+                    <div class="image-wrapper">
+                        <img src="{% static 'home/polonia_thumb.jpg' %}" alt="Hábitat Polonia">
+                    </div>
+                    <span class="habitat-name">Hábitat de Polonia</span>
+                </a>
+
+                <!-- HAWAII -->
+                <a href="/hawaii/" class="habitat-card">
+                    <div class="image-wrapper">
+                        <img src="{% static 'home/hawaii_thumb.jpg' %}" alt="Hábitat Hawaii">
+                    </div>
+                    <span class="habitat-name">Hábitat de Hawaii</span>
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>
