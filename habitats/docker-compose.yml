@@ -1,0 +1,11 @@
+services:
+  web:
+    build: .
+    container_name: habitats_web
+    ports:
+      - "8000:8000"
+    # Montamos el código para ver cambios sin rebuild
+    volumes:
+      - ./habitats:/app/habitats
+    environment:
+      DJANGO_DEBUG: "True"
